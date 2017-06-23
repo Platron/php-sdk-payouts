@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Atol\services;
+namespace Platron\PhpSdkPayout\services;
 
 use stdClass;
 
