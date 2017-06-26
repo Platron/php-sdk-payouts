@@ -2,7 +2,7 @@
 
 namespace Platron\PhpSdkPayout\data_objects;
 
-class TransactionDataObject extends stdClass {
+class TransactionDataObject extends \stdClass {
     /** var int Номер счета получаетля платежа, это может быть кошелек, банковский счет, номер телефона и т.д */
     public $UserId;
     /** var string Тип платежа */
