@@ -8,7 +8,7 @@ class OpenDisputeRequest extends BaseServiceRequest {
     public $ClientTransactionId;
     
     public function getRequestUrlPath() {
-        return '';
+        return '/transaction/open_dispute';
     }
 
 }
