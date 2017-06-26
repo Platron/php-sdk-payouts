@@ -7,10 +7,10 @@ use stdClass;
 abstract class BaseServiceResponse {
     
     /** @var int */
-    protected $ErrorCode;
+    public $ErrorCode;
     
     /** @var string */
-    protected $ErrorMessage;
+    public $ErrorMessage;
     
     public function __construct(stdClass $response) {
         foreach (get_object_vars($this) as $name => $value) {

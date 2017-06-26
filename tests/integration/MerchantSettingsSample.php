@@ -1,6 +1,6 @@
 <?php
 
-namespace Platron\Atol\tests\integration;
+namespace Platron\PhpSdkPayout\tests\integration;
 
 class MerchantSettings {
     const 
