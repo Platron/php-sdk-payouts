@@ -4,8 +4,54 @@ namespace Platron\PhpSdkPayout\services;
 
 class TransactionNewRequest extends BaseServiceRequest {
     
+    /** @var string Идентификатор транзакции на стороне клиента */
+    public $ClientTransactionId;
+    /** @var string Идентификатор счета в системе Platron.pro */
+    public $AccountId;
+    /** @var float Сумма транзакции */
+    public $Amount;
+    /** @var float Комиссия */
+    public $Fee;
+    /** @var string Валюта транзакции */
+    public $Currency = 'RUB';
+    /** @var string Имя получателя платежа */
+    public $Name;
+    /** @var string Фамилия получателя платежа */
+    public $Surname;
+    /** @var string Отчество получателя платежа */
+    public $MiddleName;
+    /** @var string Паспортные данные получателя платежа */
+    public $Passport;
+    /** @var string Адрес получателя платежа */
+    public $Address;
+    /** @var string Email получателя платежа */
+    public $Email;
+    /** @var int Номер телефона получателя платежа */
+    public $Phone;
+    /** @var int ИНН(или его аналог) получателя платежа */
+    public $TaxId;
+    /** @var string БИК банка получателя платежа */
+    public $Bik;
+    /** @var int Номер банковского счета получателя платежа */
+    public $BankAccount;
+    /** @var boolean Признак ESCROW-транзакции */
+    public $Escrow;
+    /** @var int Период ESCROW-транзакции в минутах. Если будет задано поле Escrow, и будет не задано данное поле, то будет возвращена ошибка */
+    public $EscrowPeriod;
+    /** @var string Крайний срок подтверждения транзакции. Если будет задано поле Escrow, и будет не задано данное поле, то будет возвращена ошибка */
+    public $EscrowDeadline;
+    /** @var string Тип платежного метода */
+    public $TypePaymentMethod;
+    /** @var string Номер счета. Это может быть номер мобильного телефона, номер карты, банковский счет и тд в зависимости от платежного метода. */
+    public $AccountNumber;
+    /** @var boolean Признак что необходимо оплатить налог */
+    public $IncludeTax;
+    
+    /**
+     * @inheritdoc
+     */
     public function getRequestUrlPath() {
-        
+        return '/transaction/new';
     }
 
 }
