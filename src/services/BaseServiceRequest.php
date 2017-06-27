@@ -4,7 +4,7 @@ namespace Platron\PhpSdkPayout\services;
 
 abstract class BaseServiceRequest {
     
-    const REQUEST_URL = 'https://platron.pro/';
+    const REQUEST_URL = 'https://api.platron.pro/v1.0';
     
     /** @var string */
     protected $login;
@@ -34,8 +34,8 @@ abstract class BaseServiceRequest {
 			}
 		}
         
-        $filledvars['Login'] = $this->login;
-        $filledvars['Signature'] = hash('sha256' ,$this->getRequestUrlPath() . json_encode($filledvars) . $this->secretKey);
+        $filledvars['Login'] = $this->login;       
+        $filledvars['Signature'] = base64_encode(hash('sha256', $this->getRequestUrlPath() . json_encode($filledvars) . $this->secretKey));     
         
 		return $filledvars;
 	}

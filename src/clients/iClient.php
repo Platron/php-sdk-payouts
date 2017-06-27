@@ -1,8 +1,8 @@
 <?php
 
-namespace Platron\Atol\clients;
+namespace Platron\PhpSdkPayout\clients;
 
-use Platron\Atol\services\BaseServiceRequest;
+use Platron\PhpSdkPayout\services\BaseServiceRequest;
 
 interface iClient {
     
