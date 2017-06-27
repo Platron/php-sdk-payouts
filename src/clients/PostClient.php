@@ -30,10 +30,6 @@ class PostClient implements iClient {
         $requestParameters = $service->getParameters();
         $requestUrl = $service->getRequestUrlPath();
         
-        $curlHttpHeaders = array(
-            'Content-Type: application/json',
-        );
-        
         $curl = curl_init(BaseServiceRequest::REQUEST_URL . $service->getRequestUrlPath());
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
@@ -41,7 +37,7 @@ class PostClient implements iClient {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestParameters));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $curlHttpHeaders);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         
 		$response = curl_exec($curl);
         
