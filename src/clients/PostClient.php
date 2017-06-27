@@ -30,6 +30,10 @@ class PostClient implements iClient {
         $requestParameters = $service->getParameters();
         $requestUrl = $service->getRequestUrlPath();
         
+        $curlHttpHeaders = array(
+            'Content-Type: application/json',
+        );
+        
         $curl = curl_init(BaseServiceRequest::REQUEST_URL . $service->getRequestUrlPath());
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
@@ -37,6 +41,8 @@ class PostClient implements iClient {
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestParameters));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $curlHttpHeaders);
+        
 		$response = curl_exec($curl);
         
         if($this->logger){
@@ -51,7 +57,7 @@ class PostClient implements iClient {
         if(curl_getinfo($curl, CURLINFO_HTTP_CODE) != self::HTTP_CODE_OK){
             throw new SdkException('Wrong HTTP code '.curl_getinfo($curl, CURLINFO_HTTP_CODE), curl_getinfo($curl, CURLINFO_HTTP_CODE));
         }
-
+        
 		return json_decode($response)->response;
     }
 }
