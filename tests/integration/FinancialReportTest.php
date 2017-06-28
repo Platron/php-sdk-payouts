@@ -8,7 +8,7 @@ use Platron\PhpSdkPayout\services\FinancialReportResponse;
 use Platron\PhpSdkPayout\services\AccountListRequest;
 use Platron\PhpSdkPayout\services\AccountListResponse;
 
-class FinancialReport extends IntegrationTestBase {
+class FinancialReportTest extends IntegrationTestBase {
     public function testRequest(){
         $client = new PostClient();
         $requestAccountList = new AccountListRequest($this->login, $this->secretKey);

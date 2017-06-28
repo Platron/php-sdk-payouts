@@ -11,7 +11,7 @@ class AccountListTest extends IntegrationTestBase {
         $client = new PostClient();
         $request = new AccountListRequest($this->login, $this->secretKey);
         $response = new AccountListResponse($client->sendRequest($request));
-        
+
         $this->assertTrue($response->isValid());
     }
 }

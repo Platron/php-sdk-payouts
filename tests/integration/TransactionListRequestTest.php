@@ -8,7 +8,7 @@ use Platron\PhpSdkPayout\services\TransactionListResponse;
 use Platron\PhpSdkPayout\services\AccountListRequest;
 use Platron\PhpSdkPayout\services\AccountListResponse;
 
-class TransactionListRequest extends IntegrationTestBase {
+class TransactionListRequestTest extends IntegrationTestBase {
     public function testRequest(){
         $client = new PostClient();
         $requestAccountList = new AccountListRequest($this->login, $this->secretKey);
@@ -19,7 +19,7 @@ class TransactionListRequest extends IntegrationTestBase {
         $requestTransactionList->StartDate = '09.11.2016 01:00:00';
         $requestTransactionList->EndDate = '09.11.2016 02:00:00';
         $responseTransactionList = new TransactionListResponse($client->sendRequest($requestTransactionList));
-        
+
         $this->assertTrue($responseTransactionList->isValid());
     }
 }

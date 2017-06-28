@@ -27,16 +27,16 @@ abstract class BaseServiceRequest {
 	 * @return array
 	 */
 	public function getParameters() {
-		$filledvars = array();
+		$filledvars['request'] = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value && !in_array($name, ['login','secretKey'])) {
-				$filledvars[$name] = (string)$value;
+			if ($value && !in_array($name, array('login','secretKey'))) {
+				$filledvars['request'][$name] = (string)$value;
 			}
 		}
         
-        $filledvars['Login'] = $this->login;       
-        $filledvars['Signature'] = base64_encode(hash('sha256', $this->getRequestUrlPath() . json_encode($filledvars) . $this->secretKey));     
-        
+        $filledvars['request']['Login'] = $this->login;
+        $filledvars['request']['Signature'] = base64_encode(hash('sha256', $this->getRequestUrlPath() . json_encode($filledvars) . $this->secretKey, true));
+
 		return $filledvars;
 	}
 }

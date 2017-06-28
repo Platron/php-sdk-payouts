@@ -10,7 +10,7 @@ class PostClient implements iClient {
     
     const 
         LOG_LEVEL = 0,
-        HTTP_CODE_OK = 400;
+        HTTP_CODE_OK = 200;
     
     /** @var string */
     protected $login;
@@ -52,6 +52,10 @@ class PostClient implements iClient {
         
         if(curl_getinfo($curl, CURLINFO_HTTP_CODE) != self::HTTP_CODE_OK){
             throw new SdkException('Wrong HTTP code '.curl_getinfo($curl, CURLINFO_HTTP_CODE), curl_getinfo($curl, CURLINFO_HTTP_CODE));
+        }
+
+        if(!json_decode($response)){
+            throw new SdkException('Not json in response');
         }
         
 		return json_decode($response)->response;

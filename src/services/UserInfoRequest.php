@@ -2,7 +2,7 @@
 
 namespace Platron\PhpSdkPayout\services;
 
-class UserInfoRequest {
+class UserInfoRequest extends BaseServiceRequest{
     const 
         FIND_BY_CARD = '10',
         FIND_BY_MOBILE = '20',
@@ -15,4 +15,12 @@ class UserInfoRequest {
     public $UserInfoIdentity;
     /** @var string Непосредственно отвечает за идентфикатор пользователя, который соответствует UserInfoIdentity */
     public $UserId;
+    
+    /**
+     * @inheritdoc
+     */
+    public function getRequestUrlPath() {
+        return '/user/info';
+    }
+
 }

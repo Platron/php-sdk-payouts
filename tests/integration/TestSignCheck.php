@@ -11,7 +11,7 @@ class TestSignCheck extends IntegrationTestBase {
         $client = new PostClient();
         $request = new TestSignRequest($this->login, $this->secretKey);
         $response = new TestSignResponse($client->sendRequest($request));
-        
+
         $this->assertTrue($response->isValid());
     }
 }
