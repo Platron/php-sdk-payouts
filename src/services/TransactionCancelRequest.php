@@ -2,7 +2,7 @@
 
 namespace Platron\PhpSdkPayout\services;
 
-class CancelTransactionRequest extends BaseServiceRequest {
+class TransactionCancelRequest extends BaseServiceRequest {
     
     /** @var string Идентификатор транзакции на стороне клиента */
     public $ClientTransactionId;

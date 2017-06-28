@@ -4,6 +4,14 @@ namespace Platron\PhpSdkPayout\services;
 
 class TransactionNewRequest extends BaseServiceRequest {
     
+    const 
+        PAYMENT_TYPE_CARD = 10,
+        PAYMENT_TYPE_PHONE = 20,
+        PAYMENT_TYPE_WEBMONEY = 30,
+        PAYMENT_TYPE_BANK_ACCOUNT = 40,
+        PAYMENT_TYPE_YANDEXMONEY = 50,
+        PAYMENT_TYPE_QIWI = 60;
+    
     /** @var string Идентификатор транзакции на стороне клиента */
     public $ClientTransactionId;
     /** @var string Идентификатор счета в системе Platron.pro */

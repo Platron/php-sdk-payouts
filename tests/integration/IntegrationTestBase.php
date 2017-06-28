@@ -9,7 +9,9 @@ abstract class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
 	protected $login;
 	/** @var string */
 	protected $secretKey;
-	
+	/** @var string */
+    protected $webmoneyWalletToGetPayout;
+    
 	public function setUp()
     {
 		$this->login = MerchantSettings::LOGIN;
