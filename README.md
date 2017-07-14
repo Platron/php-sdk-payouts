@@ -3,7 +3,9 @@ Platron Atol SDK
 ## Установка
 
 Проект предполагает через установку с использованием composer
-<pre><code>composer require platron/php-sdk-payout</pre></code>
+```
+composer require platron/php-sdk-payout
+```
 
 ## Тесты
 Для работы тестов необходим PHPUnit, для установки необходимо выполнить команду
