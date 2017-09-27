@@ -4,7 +4,7 @@ Platron Atol SDK
 
 Проект предполагает через установку с использованием composer
 ```
-composer require platron/php-sdk-payout
+composer require payprocessing/php-sdk-payout
 ```
 
 ## Тесты
