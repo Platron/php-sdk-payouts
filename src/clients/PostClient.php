@@ -9,9 +9,7 @@ use Psr\Log\LogLevel;
 
 class PostClient implements iClient {
     
-    const 
-        LOG_LEVEL = LogLevel::INFO,
-        HTTP_CODE_OK = 200;
+    const HTTP_CODE_OK = 200;
     
     /** @var string */
     protected $login;
@@ -43,8 +41,8 @@ class PostClient implements iClient {
 		$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(self::LOG_LEVEL, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters));
-            $this->logger->log(self::LOG_LEVEL, 'Response '.$response);
+            $this->logger->log(LogLevel::INFO, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters));
+            $this->logger->log(LogLevel::INFO, 'Response '.$response);
         }
 		
 		if(curl_errno($curl)){
