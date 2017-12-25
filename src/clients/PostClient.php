@@ -5,11 +5,12 @@ namespace Platron\PhpSdkPayout\clients;
 use Platron\PhpSdkPayout\SdkException;
 use Platron\PhpSdkPayout\services\BaseServiceRequest;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 class PostClient implements iClient {
     
     const 
-        LOG_LEVEL = 0,
+        LOG_LEVEL = LogLevel::INFO,
         HTTP_CODE_OK = 200;
     
     /** @var string */
