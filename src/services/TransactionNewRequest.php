@@ -52,6 +52,10 @@ class TransactionNewRequest extends BaseServiceRequest {
     public $TypePaymentMethod;
     /** @var string Номер счета. Это может быть номер мобильного телефона, номер карты, банковский счет и тд в зависимости от платежного метода. */
     public $AccountNumber;
+	/** @var string Месяц срока действия карты */
+    public $CardExpiryMonth;
+	/** @var string Год срока действия карты */
+    public $CardExpiryYear;
     /** @var boolean Признак что необходимо оплатить налог */
     public $IncludeTax;
     
