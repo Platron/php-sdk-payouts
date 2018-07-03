@@ -21,6 +21,9 @@ class TransactionNewTest extends IntegrationTestBase {
         $requestTransactionNew->AccountNumber = 'R195152888589';
         $requestTransactionNew->Amount = '0.01';
         $requestTransactionNew->Currency = 'RUB';
+		$requestTransactionNew->Name = 'Тестовое имя';
+		$requestTransactionNew->Surname = 'Тестовая фамилия';
+		$requestTransactionNew->MiddleName = 'Тестовое отчество';
         $responseTransactionNew = new TransactionNewResponse($client->sendRequest($requestTransactionNew));
 
         $this->assertTrue($responseTransactionNew->isValid());

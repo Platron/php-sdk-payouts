@@ -35,7 +35,7 @@ abstract class BaseServiceRequest {
 		}
         
         	$filledvars['request']['Login'] = $this->login;
-        	$filledvars['request']['Signature'] = base64_encode(hash('sha256', $this->getRequestUrlPath() . json_encode($filledvars) . $this->secretKey, true));
+        	$filledvars['request']['Signature'] = base64_encode(hash('sha256', $this->getRequestUrlPath() . json_encode($filledvars, JSON_UNESCAPED_UNICODE) . $this->secretKey, true));
 
 		return $filledvars;
 	}

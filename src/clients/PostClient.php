@@ -34,14 +34,14 @@ class PostClient implements iClient {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
         
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestParameters));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestParameters, JSON_UNESCAPED_UNICODE));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         
 		$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(LogLevel::INFO, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters));
+            $this->logger->log(LogLevel::INFO, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters, JSON_UNESCAPED_UNICODE));
             $this->logger->log(LogLevel::INFO, 'Response '.$response);
         }
 		
