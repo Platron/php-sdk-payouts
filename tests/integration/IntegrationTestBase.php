@@ -2,8 +2,6 @@
 
 namespace Platron\PhpSdkPayout\tests\integration;
 
-use Platron\PhpSdkPayout\tests\integration\MerchantSettings;
-
 abstract class IntegrationTestBase extends \PHPUnit_Framework_TestCase {
 	/** @var string */
 	protected $login;
