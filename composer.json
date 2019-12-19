@@ -3,7 +3,10 @@
     "description": "Platron.pro SDK",
     "require": {
         "php": ">=5.3",
-        "psr/log": "1.0.2"
+        "psr/log": "1.0.2",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "inacho/php-credit-card-validator": "^1.0"
     },
     "require-dev": {
         "php": ">=5.6",
