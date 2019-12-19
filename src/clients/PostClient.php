@@ -66,13 +66,12 @@ class PostClient implements iClient {
      * @return array
      */
     private function maskParameters(array $parameters){
-        foreach($parameters as $name => $value){
+        array_walk_recursive($parameters, function(&$value){
             $validCardResult = CreditCard::validCreditCard($value);
             if($validCardResult['valid']){
-                $parameters[$name] = substr($value, 0, 6).str_repeat('*', strlen($value) - 10).substr($value, -4);
+                $value = substr($value, 0, 6).str_repeat('*', strlen($value) - 10).substr($value, -4);
             }
-        }
-
+        });
         return $parameters;
     }
 }
