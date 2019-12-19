@@ -2,6 +2,7 @@
 
 namespace Platron\PhpSdkPayout\clients;
 
+use Inacho\CreditCard;
 use Platron\PhpSdkPayout\SdkException;
 use Platron\PhpSdkPayout\services\BaseServiceRequest;
 use Psr\Log\LoggerInterface;
@@ -15,7 +16,6 @@ class PostClient implements iClient {
     protected $login;
     
     /**
-     * @param string $login
      * @param LoggerInterface $logger
      */
     public function __construct(LoggerInterface $logger = null) {
@@ -41,7 +41,8 @@ class PostClient implements iClient {
 		$response = curl_exec($curl);
         
         if($this->logger){
-            $this->logger->log(LogLevel::INFO, 'Requested url '.$requestUrl.' params '. json_encode($requestParameters, JSON_UNESCAPED_UNICODE));
+            $maskedParameters = $this->maskParameters($requestParameters);
+            $this->logger->log(LogLevel::INFO, 'Requested url '.$requestUrl.' params '. json_encode($maskedParameters, JSON_UNESCAPED_UNICODE));
             $this->logger->log(LogLevel::INFO, 'Response '.$response);
         }
 		
@@ -58,5 +59,20 @@ class PostClient implements iClient {
         }
 
 		return json_decode($response)->response;
+    }
+
+    /**
+     * @param array $parameters
+     * @return array
+     */
+    private function maskParameters(array $parameters){
+        foreach($parameters as $name => $value){
+            $validCardResult = CreditCard::validCreditCard($value);
+            if($validCardResult['valid']){
+                $parameters[$name] = substr($value, 0, 6).str_repeat('*', strlen($value) - 10).substr($value, -4);
+            }
+        }
+
+        return $parameters;
     }
 }
